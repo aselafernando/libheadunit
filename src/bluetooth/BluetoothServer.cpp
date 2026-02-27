@@ -1,7 +1,8 @@
 #include "bluetooth/BluetoothServer.h"
 #include <QDataStream>
 #include <QLoggingCategory>
-
+#include <sstream>
+#include <iomanip>
 #include "protocol/Bluetooth.pb.h"
 
 Q_LOGGING_CATEGORY(HEADUNIT_BT_SERVER, "libheadunit::BluetoothServer")
