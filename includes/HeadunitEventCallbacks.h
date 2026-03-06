@@ -26,6 +26,7 @@ public:
     virtual void MediaSetupComplete(ServiceChannels chan) = 0;
 
     virtual void DisconnectionOrError() = 0;
+    virtual void Connected() = 0;
 
     virtual void CustomizeCarInfo(HU::ServiceDiscoveryResponse &carInfo) {
     }

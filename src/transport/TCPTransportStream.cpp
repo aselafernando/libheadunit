@@ -86,16 +86,17 @@ int TCPTransportStream::itcp_accept() {
     int ret = 0;
     if (wifi_direct) {
         loge("Reading from WiFi direct");
-        int tries = 0;
-        while (readfd < 0) {
-            if (tries > 10){
-                loge("itcp accept timed out");
-                break;
-            }
+        //Blocking code
+        //int tries = 0;
+        //while (readfd < 0) {
+        //    if (tries > 10){
+        //        loge("itcp accept timed out");
+        //        break;
+        //    }
             readfd = accept(tcp_so_fd, (struct sockaddr *)&cli_addr, &cli_len);
-            ms_sleep(100);
-            tries++;
-        }
+        //    ms_sleep(100);
+        //    tries++;
+        //}
         if (readfd < 0) {
             loge("Error accept errno: %d (%s)", errno, strerror(errno));
             return (-1);
@@ -127,7 +128,8 @@ int TCPTransportStream::itcp_init() {
     int cmd_len = 0, ctr = 0;
 
     errno = 0;
-    if ((tcp_so_fd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK , 0)) < 0) {  // Create socket
+    //if ((tcp_so_fd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0)) < 0) {  // Create socket
+    if ((tcp_so_fd = socket(AF_INET, SOCK_STREAM , 0)) < 0) {  // Create socket
         loge("gen_server_loop socket  errno: %d (%s)", errno, strerror(errno));
         return (-1);
     }
@@ -168,14 +170,6 @@ int TCPTransportStream::itcp_init() {
     if (readfd >= 0) {
         itcp_deinit();        
     }
-    while (readfd < 0) {      // While we don't have an IO socket file descriptor...
-        ret = itcp_accept();  // Try to get one with 100 ms timeout
-        if (ret < 0) {
-            loge("Error while trying to read from TCP stream");
-            return (-1);
-        }
-    }
-    logd("itcp_accept done");
 
     return (0);
 }
@@ -208,9 +202,30 @@ int TCPTransportStream::Start() {
         logd("  SET: itcp_state: %d (%s)", itcp_state, state_get(itcp_state));
         return (-1);
     }
+
     logd("OK itcp_init");
 
     itcp_state = HU_STATE::hu_STATE_STARTED;
     logd("  SET: itcp_state: %d (%s)", itcp_state, state_get(itcp_state));
+    
+    return (0);
+}
+
+int TCPTransportStream::Wait() {
+    //Blocking waiting for a connection
+    logd("itcp_accept start");
+    int ret = 0;
+
+    //while (readfd < 0) {      // While we don't have an IO socket file descriptor...
+        ret = itcp_accept();  // Try to get one with 100 ms timeout
+        if (ret < 0) {
+            loge("Error while trying to read from TCP stream");
+            Stop();
+            ret = -1;
+        }
+    //}
+
+    logd("itcp_accept done");
+
     return (0);
 }

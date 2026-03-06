@@ -111,7 +111,8 @@ protected:
     std::thread hu_thread;
     int command_read_fd = -1;
     int command_write_fd = -1;
-    bool hu_thread_quit_flag = false;
+    bool hu_thread_main_quit = false;
+    bool hu_thread_quit = false;
 
     // Can be called from any thread
     HUThreadCommand *popCommand();

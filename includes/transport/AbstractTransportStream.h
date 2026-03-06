@@ -19,6 +19,7 @@ public:
     }
     virtual int Start() = 0;
     virtual int Stop() = 0;
+    virtual int Wait() = 0;
     virtual int Write(const unsigned char *buf, int len, int tmo) = 0;
 
     inline int GetReadFD() {

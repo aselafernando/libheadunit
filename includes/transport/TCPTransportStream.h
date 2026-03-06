@@ -21,6 +21,7 @@ public:
     TCPTransportStream(std::map<std::string, std::string> _settings);
     virtual int Start() override;
     virtual int Stop() override;
+    virtual int Wait() override;
     virtual int Write(const byte* buf, int len, int tmo) override;
 
 private:

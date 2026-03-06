@@ -116,6 +116,10 @@ USBTransportStream::~USBTransportStream() {
     }
 }
 
+int USBTransportStream::Wait() {
+    return Start();
+}
+
 int USBTransportStream::Stop() {
     m_state = HU_STATE::hu_STATE_STOPPIN;
     logd("  SET: iusb_state: %d (%s)", m_state, state_get(m_state));

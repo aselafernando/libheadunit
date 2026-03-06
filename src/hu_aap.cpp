@@ -1066,6 +1066,10 @@ int HUServer::queueCommand(IHUAnyThreadInterface::HUThreadCommand &&command) {
 }
 
 int HUServer::shutdown() {
+    logd("shutdown()");
+    
+    hu_thread_quit = true;
+
     if (hu_thread.joinable()) {
         int ret = queueCommand([this](IHUConnectionThreadInterface &s) {
             if (iaap_state == HU_STATE::hu_STATE_STARTED) {
@@ -1081,7 +1085,9 @@ int HUServer::shutdown() {
         if (ret < 0) {
             loge("write end command error %d", ret);
         }
-        hu_thread.join();
+
+        //Currently called from the same thread so can't join!
+        //hu_thread.join();
     }
 
     if (command_write_fd >= 0)
@@ -1107,6 +1113,8 @@ int HUServer::stop() {  // Sends Byebye, then stops Transport/USBACC/OAP
     // assumes HU thread
     if (iaap_state == HU_STATE::hu_STATE_STARTIN) {
         // hu_thread not ready yet
+        loge("hu_thread not ready yet");
+        //return 0;
         return shutdown();
     }
     // Continue only if started or starting...
@@ -1115,9 +1123,10 @@ int HUServer::stop() {  // Sends Byebye, then stops Transport/USBACC/OAP
 
     HU::ShutdownRequest shutdownReq;
     shutdownReq.set_reason(HU::ShutdownRequest::REASON_QUIT);
-    sendEncodedMessage(0, ControlChannel, PROTOCOL_MESSAGE::ShutdownRequest, shutdownReq);
+    // TODO: Leads to a recursive loop if the connection has been lost ie wifi dropped out
+    //sendEncodedMessage(0, ControlChannel, PROTOCOL_MESSAGE::ShutdownRequest, shutdownReq);
 
-    hu_thread_quit_flag = true;
+    hu_thread_main_quit = true;
     callbacks.DisconnectionOrError();
 
     return (0);
@@ -1135,11 +1144,10 @@ IHUAnyThreadInterface::HUThreadCommand *HUServer::popCommand() {
 }
 
 void HUServer::mainThread() {
-    pthread_setname_np(pthread_self(), "hu_thread_main");
-
     int transportFD = transport->GetReadFD();
     int errorfd = transport->GetErrorFD();
-    while (!hu_thread_quit_flag) {
+
+    while (!hu_thread_main_quit) {
         fd_set sock_set;
         FD_ZERO(&sock_set);
         FD_SET(command_read_fd, &sock_set);
@@ -1157,7 +1165,7 @@ void HUServer::mainThread() {
         }
         if (errorfd >= 0 && FD_ISSET(errorfd, &sock_set)) {
             logd("Got errorfd");
-            hu_thread_quit_flag = true;
+            hu_thread_main_quit = true;
             callbacks.DisconnectionOrError();
         } else {
             if (FD_ISSET(command_read_fd, &sock_set)) {
@@ -1180,7 +1188,6 @@ void HUServer::mainThread() {
             }
         }
     }
-    logd("hu_thread_main exit");
     iaap_state = HU_STATE::hu_STATE_STOPPED;
 }
 
@@ -1189,52 +1196,83 @@ static_assert(PIPE_BUF >= sizeof(IHUAnyThreadInterface::HUThreadCommand *), "PIP
 int HUServer::start() {  // Starts Transport/USBACC/OAP, then AA
     // protocol w/ VersReq(1), SSL handshake,
     // Auth Complete
+    hu_thread_quit = false;
 
     if (iaap_state == HU_STATE::hu_STATE_STARTED || iaap_state == HU_STATE::hu_STATE_STARTIN) {
-        loge("CHECK: iaap_state: %d (%s)", iaap_state, state_get(iaap_state));
-        return (0);
+        logd("CHECK: iaap_state: %d (%s)", iaap_state, state_get(iaap_state));
+        return 0;
     }
-
-    pthread_setname_np(pthread_self(), "aa_main_thread");
 
     iaap_state = HU_STATE::hu_STATE_STARTIN;
     logd("  SET: iaap_state: %d (%s)", iaap_state, state_get(iaap_state));
 
+    logd("Starting Transport");
     int ret = startTransport();  // Start Transport/USBACC/OAP
     if (ret) {
         iaap_state = HU_STATE::hu_STATE_STOPPED;
-        logd("  SET: iaap_state: %d (%s)", iaap_state, state_get(iaap_state));
-        return (ret);  // Done if error
+        loge("  SET: iaap_state: %d (%s)", iaap_state, state_get(iaap_state));
+        return -1;  // Done if error
     }
 
-    byte vr_buf[] = {0, 1, 0, 1};  // Version Request
-    ret = sendUnencodedBlob(0, ControlChannel, INIT_MESSAGE::VersionRequest, vr_buf, sizeof(vr_buf), 2000);
-    if (ret < 0) {
-        loge("Version request send ret: %d", ret);
-        return (-1);
-    }
+    hu_thread = std::thread([this] {
+        pthread_setname_np(pthread_self(), "hu_thread_main");
+        logd("Started hu_thread_main");
 
-    while (iaap_state == HU_STATE::hu_STATE_STARTIN) {
-        ret = processReceived(2000);
-        if (ret < 0) {
-            shutdown();
-            return (ret);
+        int ret = 0;
+        
+        for (;!hu_thread_quit;) {
+            
+            iaap_state = HU_STATE::hu_STATE_STARTIN;
+            logd("  SET: iaap_state: %d (%s)", iaap_state, state_get(iaap_state));
+
+            logd("Transport Waiting");
+            if ((ret = transport->Wait()) < 0) {
+                loge("Transport Error Waiting %d", ret);
+                ms_sleep(1000);
+                stopTransport();
+                startTransport();
+                continue;
+            }
+            
+            byte vr_buf[] = { 0, 1, 0, 1 };  // Version Request
+            ret = sendUnencodedBlob(0, ControlChannel, INIT_MESSAGE::VersionRequest, vr_buf, sizeof(vr_buf), 2000);
+            if (ret < 0) {
+                loge("Version request send ret: %d", ret);
+                ms_sleep(1000);
+                continue;
+            }
+
+            while (iaap_state == HU_STATE::hu_STATE_STARTIN) {
+                ret = processReceived(2000);
+                if (ret < 0) {
+                    loge("processReceived ret: %d", ret);
+                    shutdown();
+                    break;
+                }
+            }
+
+            iaap_state = HU_STATE::hu_STATE_STARTED;
+            logd("  SET: iaap_state: %d (%s)", iaap_state, state_get(iaap_state));
+
+            int pipefd[2];
+            ret = pipe2(pipefd, O_DIRECT);
+            if (ret < 0) {
+                loge("pipe2 failed ret: %d %i", ret, errno);
+                shutdown();
+                break;
+            }
+
+            logd("Starting mainThread()");
+            command_read_fd = pipefd[0];
+            command_write_fd = pipefd[1];
+            hu_thread_main_quit = false;
+            callbacks.Connected();
+            this->mainThread();
+            logd("Finished mainThread()");
         }
-    }
 
-    int pipefd[2];
-    ret = pipe2(pipefd, O_DIRECT);
-    if (ret < 0) {
-        loge("pipe2 failed ret: %d %i", ret, errno);
-        shutdown();
-        return (-1);
-    }
-
-    logd("Starting HU thread");
-    command_read_fd = pipefd[0];
-    command_write_fd = pipefd[1];
-    hu_thread_quit_flag = false;
-    hu_thread = std::thread([this] { this->mainThread(); });
+        logd("Finished hu_thread_main");
+    });
 
     return (0);
 }
