@@ -4,242 +4,199 @@
 #include "Bluetooth.pb.h"
 
 #include <algorithm>
-#include "google/protobuf/io/coded_stream.h"
-#include "google/protobuf/extension_set.h"
-#include "google/protobuf/wire_format_lite.h"
-#include "google/protobuf/descriptor.h"
-#include "google/protobuf/generated_message_reflection.h"
-#include "google/protobuf/reflection_ops.h"
-#include "google/protobuf/wire_format.h"
-#include "google/protobuf/generated_message_tctable_impl.h"
+
+#include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/generated_message_reflection.h>
+#include <google/protobuf/reflection_ops.h>
+#include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
+#include <google/protobuf/port_def.inc>
 
-// Must be included last.
-#include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::google::protobuf;
-namespace _pbi = ::google::protobuf::internal;
-namespace _fl = ::google::protobuf::internal::field_layout;
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace HU {
-
-inline constexpr WifiSecurityReponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        ssid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        key_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        bssid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        security_mode_{static_cast< ::HU::WifiSecurityReponse_SecurityMode >(0)},
-        access_point_type_{static_cast< ::HU::WifiSecurityReponse_AccessPointType >(0)} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR WifiSecurityReponse::WifiSecurityReponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
+PROTOBUF_CONSTEXPR WifiSecurityReponse::WifiSecurityReponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.ssid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.key_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.bssid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.security_mode_)*/0
+  , /*decltype(_impl_.access_point_type_)*/0} {}
 struct WifiSecurityReponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WifiSecurityReponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR WifiSecurityReponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~WifiSecurityReponseDefaultTypeInternal() {}
   union {
     WifiSecurityReponse _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WifiSecurityReponseDefaultTypeInternal _WifiSecurityReponse_default_instance_;
-
-inline constexpr WifiInfoResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        ip_address_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        port_{0u},
-        status_{static_cast< ::HU::WifiInfoResponse_Status >(1)} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR WifiInfoResponse::WifiInfoResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct WifiInfoResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WifiInfoResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WifiInfoResponseDefaultTypeInternal() {}
-  union {
-    WifiInfoResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WifiInfoResponseDefaultTypeInternal _WifiInfoResponse_default_instance_;
-
-inline constexpr WifiInfoRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        ip_address_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        port_{0u} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR WifiInfoRequest::WifiInfoRequest(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WifiSecurityReponseDefaultTypeInternal _WifiSecurityReponse_default_instance_;
+PROTOBUF_CONSTEXPR WifiInfoRequest::WifiInfoRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.ip_address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.port_)*/0u} {}
 struct WifiInfoRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WifiInfoRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR WifiInfoRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~WifiInfoRequestDefaultTypeInternal() {}
   union {
     WifiInfoRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WifiInfoRequestDefaultTypeInternal _WifiInfoRequest_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WifiInfoRequestDefaultTypeInternal _WifiInfoRequest_default_instance_;
+PROTOBUF_CONSTEXPR WifiInfoResponse::WifiInfoResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.ip_address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.port_)*/0u
+  , /*decltype(_impl_.status_)*/1} {}
+struct WifiInfoResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WifiInfoResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WifiInfoResponseDefaultTypeInternal() {}
+  union {
+    WifiInfoResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WifiInfoResponseDefaultTypeInternal _WifiInfoResponse_default_instance_;
 }  // namespace HU
 static ::_pb::Metadata file_level_metadata_Bluetooth_2eproto[3];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Bluetooth_2eproto[3];
-static constexpr const ::_pb::ServiceDescriptor**
-    file_level_service_descriptors_Bluetooth_2eproto = nullptr;
-const ::uint32_t TableStruct_Bluetooth_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
-    protodesc_cold) = {
-    PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.ssid_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.key_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.bssid_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.security_mode_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.access_point_type_),
-    0,
-    1,
-    2,
-    3,
-    4,
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoRequest, _impl_.ip_address_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoRequest, _impl_.port_),
-    0,
-    1,
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _impl_.ip_address_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _impl_.port_),
-    PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _impl_.status_),
-    0,
-    1,
-    2,
-};
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Bluetooth_2eproto = nullptr;
 
-static const ::_pbi::MigrationSchema
-    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 13, -1, sizeof(::HU::WifiSecurityReponse)},
-        {18, 28, -1, sizeof(::HU::WifiInfoRequest)},
-        {30, 41, -1, sizeof(::HU::WifiInfoResponse)},
+const uint32_t TableStruct_Bluetooth_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.ssid_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.key_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.bssid_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.security_mode_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiSecurityReponse, _impl_.access_point_type_),
+  0,
+  1,
+  2,
+  3,
+  4,
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoRequest, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoRequest, _impl_.ip_address_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoRequest, _impl_.port_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _impl_.ip_address_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _impl_.port_),
+  PROTOBUF_FIELD_OFFSET(::HU::WifiInfoResponse, _impl_.status_),
+  0,
+  1,
+  2,
+};
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, 11, -1, sizeof(::HU::WifiSecurityReponse)},
+  { 16, 24, -1, sizeof(::HU::WifiInfoRequest)},
+  { 26, 35, -1, sizeof(::HU::WifiInfoResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::HU::_WifiSecurityReponse_default_instance_._instance,
-    &::HU::_WifiInfoRequest_default_instance_._instance,
-    &::HU::_WifiInfoResponse_default_instance_._instance,
-};
-const char descriptor_table_protodef_Bluetooth_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\017Bluetooth.proto\022\002HU\"\271\003\n\023WifiSecurityRe"
-    "ponse\022\014\n\004ssid\030\001 \002(\t\022\013\n\003key\030\002 \002(\t\022\r\n\005bssi"
-    "d\030\003 \002(\t\022;\n\rsecurity_mode\030\004 \002(\0162$.HU.Wifi"
-    "SecurityReponse.SecurityMode\022B\n\021access_p"
-    "oint_type\030\005 \002(\0162\'.HU.WifiSecurityReponse"
-    ".AccessPointType\"\312\001\n\014SecurityMode\022\031\n\025UNK"
-    "NOWN_SECURITY_MODE\020\000\022\010\n\004OPEN\020\001\022\n\n\006WEP_64"
-    "\020\002\022\013\n\007WEP_128\020\003\022\020\n\014WPA_PERSONAL\020\004\022\021\n\rWPA"
-    "2_PERSONAL\020\010\022\025\n\021WPA_WPA2_PERSONAL\020\014\022\022\n\016W"
-    "PA_ENTERPRISE\020\024\022\023\n\017WPA2_ENTERPRISE\020\030\022\027\n\023"
-    "WPA_WPA2_ENTERPRISE\020\034\"*\n\017AccessPointType"
-    "\022\n\n\006STATIC\020\000\022\013\n\007DYNAMIC\020\001\"3\n\017WifiInfoReq"
-    "uest\022\022\n\nip_address\030\001 \002(\t\022\014\n\004port\030\002 \001(\r\"\330"
-    "\004\n\020WifiInfoResponse\022\022\n\nip_address\030\001 \001(\t\022"
-    "\014\n\004port\030\002 \001(\r\022+\n\006status\030\003 \002(\0162\033.HU.WifiI"
-    "nfoResponse.Status\"\364\003\n\006Status\022\036\n\032STATUS_"
-    "UNSOLICITED_MESSAGE\020\001\022\022\n\016STATUS_SUCCESS\020"
-    "\000\022)\n\034STATUS_NO_COMPATIBLE_VERSION\020\377\377\377\377\377\377"
-    "\377\377\377\001\022-\n STATUS_WIFI_INACCESSIBLE_CHANNEL"
-    "\020\376\377\377\377\377\377\377\377\377\001\022.\n!STATUS_WIFI_INCORRECT_CRE"
-    "DENTIALS\020\375\377\377\377\377\377\377\377\377\001\022.\n!STATUS_PROJECTION"
-    "_ALREADY_STARTED\020\374\377\377\377\377\377\377\377\377\001\022!\n\024STATUS_WI"
-    "FI_DISABLED\020\373\377\377\377\377\377\377\377\377\001\022(\n\033STATUS_WIFI_NO"
-    "T_YET_STARTED\020\372\377\377\377\377\377\377\377\377\001\022 \n\023STATUS_INVAL"
-    "ID_HOST\020\371\377\377\377\377\377\377\377\377\001\022.\n!STATUS_NO_SUPPORTE"
-    "D_WIFI_CHANNELS\020\370\377\377\377\377\377\377\377\377\001\0224\n\'STATUS_INS"
-    "TRUCT_USER_TO_CHECK_THE_PHONE\020\367\377\377\377\377\377\377\377\377\001"
-    "\022\'\n\032STATUS_PHONE_WIFI_DISABLED\020\366\377\377\377\377\377\377\377\377"
-    "\001"
-};
-static ::absl::once_flag descriptor_table_Bluetooth_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_Bluetooth_2eproto = {
-    false,
-    false,
-    1121,
-    descriptor_table_protodef_Bluetooth_2eproto,
-    "Bluetooth.proto",
-    &descriptor_table_Bluetooth_2eproto_once,
-    nullptr,
-    0,
-    3,
-    schemas,
-    file_default_instances,
-    TableStruct_Bluetooth_2eproto::offsets,
-    file_level_metadata_Bluetooth_2eproto,
-    file_level_enum_descriptors_Bluetooth_2eproto,
-    file_level_service_descriptors_Bluetooth_2eproto,
+  &::HU::_WifiSecurityReponse_default_instance_._instance,
+  &::HU::_WifiInfoRequest_default_instance_._instance,
+  &::HU::_WifiInfoResponse_default_instance_._instance,
 };
 
-// This function exists to be marked as weak.
-// It can significantly speed up compilation by breaking up LLVM's SCC
-// in the .pb.cc translation units. Large translation units see a
-// reduction of more than 35% of walltime for optimized builds. Without
-// the weak attribute all the messages in the file, including all the
-// vtables and everything they use become part of the same SCC through
-// a cycle like:
-// GetMetadata -> descriptor table -> default instances ->
-//   vtables -> GetMetadata
-// By adding a weak function here we break the connection from the
-// individual vtables back into the descriptor table.
+const char descriptor_table_protodef_Bluetooth_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\017Bluetooth.proto\022\002HU\"\271\003\n\023WifiSecurityRe"
+  "ponse\022\014\n\004ssid\030\001 \002(\t\022\013\n\003key\030\002 \002(\t\022\r\n\005bssi"
+  "d\030\003 \002(\t\022;\n\rsecurity_mode\030\004 \002(\0162$.HU.Wifi"
+  "SecurityReponse.SecurityMode\022B\n\021access_p"
+  "oint_type\030\005 \002(\0162\'.HU.WifiSecurityReponse"
+  ".AccessPointType\"\312\001\n\014SecurityMode\022\031\n\025UNK"
+  "NOWN_SECURITY_MODE\020\000\022\010\n\004OPEN\020\001\022\n\n\006WEP_64"
+  "\020\002\022\013\n\007WEP_128\020\003\022\020\n\014WPA_PERSONAL\020\004\022\021\n\rWPA"
+  "2_PERSONAL\020\010\022\025\n\021WPA_WPA2_PERSONAL\020\014\022\022\n\016W"
+  "PA_ENTERPRISE\020\024\022\023\n\017WPA2_ENTERPRISE\020\030\022\027\n\023"
+  "WPA_WPA2_ENTERPRISE\020\034\"*\n\017AccessPointType"
+  "\022\n\n\006STATIC\020\000\022\013\n\007DYNAMIC\020\001\"3\n\017WifiInfoReq"
+  "uest\022\022\n\nip_address\030\001 \002(\t\022\014\n\004port\030\002 \001(\r\"\330"
+  "\004\n\020WifiInfoResponse\022\022\n\nip_address\030\001 \001(\t\022"
+  "\014\n\004port\030\002 \001(\r\022+\n\006status\030\003 \002(\0162\033.HU.WifiI"
+  "nfoResponse.Status\"\364\003\n\006Status\022\036\n\032STATUS_"
+  "UNSOLICITED_MESSAGE\020\001\022\022\n\016STATUS_SUCCESS\020"
+  "\000\022)\n\034STATUS_NO_COMPATIBLE_VERSION\020\377\377\377\377\377\377"
+  "\377\377\377\001\022-\n STATUS_WIFI_INACCESSIBLE_CHANNEL"
+  "\020\376\377\377\377\377\377\377\377\377\001\022.\n!STATUS_WIFI_INCORRECT_CRE"
+  "DENTIALS\020\375\377\377\377\377\377\377\377\377\001\022.\n!STATUS_PROJECTION"
+  "_ALREADY_STARTED\020\374\377\377\377\377\377\377\377\377\001\022!\n\024STATUS_WI"
+  "FI_DISABLED\020\373\377\377\377\377\377\377\377\377\001\022(\n\033STATUS_WIFI_NO"
+  "T_YET_STARTED\020\372\377\377\377\377\377\377\377\377\001\022 \n\023STATUS_INVAL"
+  "ID_HOST\020\371\377\377\377\377\377\377\377\377\001\022.\n!STATUS_NO_SUPPORTE"
+  "D_WIFI_CHANNELS\020\370\377\377\377\377\377\377\377\377\001\0224\n\'STATUS_INS"
+  "TRUCT_USER_TO_CHECK_THE_PHONE\020\367\377\377\377\377\377\377\377\377\001"
+  "\022\'\n\032STATUS_PHONE_WIFI_DISABLED\020\366\377\377\377\377\377\377\377\377"
+  "\001"
+  ;
+static ::_pbi::once_flag descriptor_table_Bluetooth_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_Bluetooth_2eproto = {
+    false, false, 1121, descriptor_table_protodef_Bluetooth_2eproto,
+    "Bluetooth.proto",
+    &descriptor_table_Bluetooth_2eproto_once, nullptr, 0, 3,
+    schemas, file_default_instances, TableStruct_Bluetooth_2eproto::offsets,
+    file_level_metadata_Bluetooth_2eproto, file_level_enum_descriptors_Bluetooth_2eproto,
+    file_level_service_descriptors_Bluetooth_2eproto,
+};
 PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Bluetooth_2eproto_getter() {
   return &descriptor_table_Bluetooth_2eproto;
 }
+
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
-static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Bluetooth_2eproto(&descriptor_table_Bluetooth_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Bluetooth_2eproto(&descriptor_table_Bluetooth_2eproto);
 namespace HU {
-const ::google::protobuf::EnumDescriptor* WifiSecurityReponse_SecurityMode_descriptor() {
-  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_Bluetooth_2eproto);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* WifiSecurityReponse_SecurityMode_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Bluetooth_2eproto);
   return file_level_enum_descriptors_Bluetooth_2eproto[0];
 }
-PROTOBUF_CONSTINIT const uint32_t WifiSecurityReponse_SecurityMode_internal_data_[] = {
-    327680u, 32u, 8945800u, };
 bool WifiSecurityReponse_SecurityMode_IsValid(int value) {
-  return 0 <= value && value <= 28 && ((286265631u >> value) & 1) != 0;
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 8:
+    case 12:
+    case 20:
+    case 24:
+    case 28:
+      return true;
+    default:
+      return false;
+  }
 }
-#if (__cplusplus < 201703) && \
-  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr WifiSecurityReponse_SecurityMode WifiSecurityReponse::UNKNOWN_SECURITY_MODE;
 constexpr WifiSecurityReponse_SecurityMode WifiSecurityReponse::OPEN;
 constexpr WifiSecurityReponse_SecurityMode WifiSecurityReponse::WEP_64;
@@ -253,41 +210,53 @@ constexpr WifiSecurityReponse_SecurityMode WifiSecurityReponse::WPA_WPA2_ENTERPR
 constexpr WifiSecurityReponse_SecurityMode WifiSecurityReponse::SecurityMode_MIN;
 constexpr WifiSecurityReponse_SecurityMode WifiSecurityReponse::SecurityMode_MAX;
 constexpr int WifiSecurityReponse::SecurityMode_ARRAYSIZE;
-
-#endif  // (__cplusplus < 201703) &&
-        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
-const ::google::protobuf::EnumDescriptor* WifiSecurityReponse_AccessPointType_descriptor() {
-  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_Bluetooth_2eproto);
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* WifiSecurityReponse_AccessPointType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Bluetooth_2eproto);
   return file_level_enum_descriptors_Bluetooth_2eproto[1];
 }
-PROTOBUF_CONSTINIT const uint32_t WifiSecurityReponse_AccessPointType_internal_data_[] = {
-    131072u, 0u, };
 bool WifiSecurityReponse_AccessPointType_IsValid(int value) {
-  return 0 <= value && value <= 1;
+  switch (value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
 }
-#if (__cplusplus < 201703) && \
-  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr WifiSecurityReponse_AccessPointType WifiSecurityReponse::STATIC;
 constexpr WifiSecurityReponse_AccessPointType WifiSecurityReponse::DYNAMIC;
 constexpr WifiSecurityReponse_AccessPointType WifiSecurityReponse::AccessPointType_MIN;
 constexpr WifiSecurityReponse_AccessPointType WifiSecurityReponse::AccessPointType_MAX;
 constexpr int WifiSecurityReponse::AccessPointType_ARRAYSIZE;
-
-#endif  // (__cplusplus < 201703) &&
-        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
-const ::google::protobuf::EnumDescriptor* WifiInfoResponse_Status_descriptor() {
-  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_Bluetooth_2eproto);
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* WifiInfoResponse_Status_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Bluetooth_2eproto);
   return file_level_enum_descriptors_Bluetooth_2eproto[2];
 }
-PROTOBUF_CONSTINIT const uint32_t WifiInfoResponse_Status_internal_data_[] = {
-    851958u, 0u, };
 bool WifiInfoResponse_Status_IsValid(int value) {
-  return -10 <= value && value <= 1;
+  switch (value) {
+    case -10:
+    case -9:
+    case -8:
+    case -7:
+    case -6:
+    case -5:
+    case -4:
+    case -3:
+    case -2:
+    case -1:
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
 }
-#if (__cplusplus < 201703) && \
-  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr WifiInfoResponse_Status WifiInfoResponse::STATUS_UNSOLICITED_MESSAGE;
 constexpr WifiInfoResponse_Status WifiInfoResponse::STATUS_SUCCESS;
 constexpr WifiInfoResponse_Status WifiInfoResponse::STATUS_NO_COMPATIBLE_VERSION;
@@ -303,16 +272,13 @@ constexpr WifiInfoResponse_Status WifiInfoResponse::STATUS_PHONE_WIFI_DISABLED;
 constexpr WifiInfoResponse_Status WifiInfoResponse::Status_MIN;
 constexpr WifiInfoResponse_Status WifiInfoResponse::Status_MAX;
 constexpr int WifiInfoResponse::Status_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
-#endif  // (__cplusplus < 201703) &&
-        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
 class WifiSecurityReponse::_Internal {
  public:
   using HasBits = decltype(std::declval<WifiSecurityReponse>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_._has_bits_);
   static void set_has_ssid(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -333,73 +299,105 @@ class WifiSecurityReponse::_Internal {
   }
 };
 
-WifiSecurityReponse::WifiSecurityReponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+WifiSecurityReponse::WifiSecurityReponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:HU.WifiSecurityReponse)
 }
-inline PROTOBUF_NDEBUG_INLINE WifiSecurityReponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        ssid_(arena, from.ssid_),
-        key_(arena, from.key_),
-        bssid_(arena, from.bssid_) {}
+WifiSecurityReponse::WifiSecurityReponse(const WifiSecurityReponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  WifiSecurityReponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ssid_){}
+    , decltype(_impl_.key_){}
+    , decltype(_impl_.bssid_){}
+    , decltype(_impl_.security_mode_){}
+    , decltype(_impl_.access_point_type_){}};
 
-WifiSecurityReponse::WifiSecurityReponse(
-    ::google::protobuf::Arena* arena,
-    const WifiSecurityReponse& from)
-    : ::google::protobuf::Message(arena) {
-  WifiSecurityReponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, security_mode_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, security_mode_),
-           offsetof(Impl_, access_point_type_) -
-               offsetof(Impl_, security_mode_) +
-               sizeof(Impl_::access_point_type_));
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.ssid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ssid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_ssid()) {
+    _this->_impl_.ssid_.Set(from._internal_ssid(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.key_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.key_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_key()) {
+    _this->_impl_.key_.Set(from._internal_key(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.bssid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.bssid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_bssid()) {
+    _this->_impl_.bssid_.Set(from._internal_bssid(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.security_mode_, &from._impl_.security_mode_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.access_point_type_) -
+    reinterpret_cast<char*>(&_impl_.security_mode_)) + sizeof(_impl_.access_point_type_));
   // @@protoc_insertion_point(copy_constructor:HU.WifiSecurityReponse)
 }
-inline PROTOBUF_NDEBUG_INLINE WifiSecurityReponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        ssid_(arena),
-        key_(arena),
-        bssid_(arena) {}
 
-inline void WifiSecurityReponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, security_mode_),
-           0,
-           offsetof(Impl_, access_point_type_) -
-               offsetof(Impl_, security_mode_) +
-               sizeof(Impl_::access_point_type_));
+inline void WifiSecurityReponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ssid_){}
+    , decltype(_impl_.key_){}
+    , decltype(_impl_.bssid_){}
+    , decltype(_impl_.security_mode_){0}
+    , decltype(_impl_.access_point_type_){0}
+  };
+  _impl_.ssid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ssid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.key_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.key_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.bssid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.bssid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 WifiSecurityReponse::~WifiSecurityReponse() {
   // @@protoc_insertion_point(destructor:HU.WifiSecurityReponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void WifiSecurityReponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.ssid_.Destroy();
   _impl_.key_.Destroy();
   _impl_.bssid_.Destroy();
-  _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void WifiSecurityReponse::Clear() {
+void WifiSecurityReponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void WifiSecurityReponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:HU.WifiSecurityReponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -416,197 +414,256 @@ PROTOBUF_NOINLINE void WifiSecurityReponse::Clear() {
     }
   }
   if (cached_has_bits & 0x00000018u) {
-    ::memset(&_impl_.security_mode_, 0, static_cast<::size_t>(
+    ::memset(&_impl_.security_mode_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&_impl_.access_point_type_) -
         reinterpret_cast<char*>(&_impl_.security_mode_)) + sizeof(_impl_.access_point_type_));
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* WifiSecurityReponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* WifiSecurityReponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required string ssid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_ssid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "HU.WifiSecurityReponse.ssid");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // required string key = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_key();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "HU.WifiSecurityReponse.key");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // required string bssid = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_bssid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "HU.WifiSecurityReponse.bssid");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // required .HU.WifiSecurityReponse.SecurityMode security_mode = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          if (PROTOBUF_PREDICT_TRUE(::HU::WifiSecurityReponse_SecurityMode_IsValid(val))) {
+            _internal_set_security_mode(static_cast<::HU::WifiSecurityReponse_SecurityMode>(val));
+          } else {
+            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(4, val, mutable_unknown_fields());
+          }
+        } else
+          goto handle_unusual;
+        continue;
+      // required .HU.WifiSecurityReponse.AccessPointType access_point_type = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          if (PROTOBUF_PREDICT_TRUE(::HU::WifiSecurityReponse_AccessPointType_IsValid(val))) {
+            _internal_set_access_point_type(static_cast<::HU::WifiSecurityReponse_AccessPointType>(val));
+          } else {
+            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(5, val, mutable_unknown_fields());
+          }
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 2, 43, 2> WifiSecurityReponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_._has_bits_),
-    0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_WifiSecurityReponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // required string ssid = 1;
-    {::_pbi::TcParser::FastSS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.ssid_)}},
-    // required string key = 2;
-    {::_pbi::TcParser::FastSS1,
-     {18, 1, 0, PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.key_)}},
-    // required string bssid = 3;
-    {::_pbi::TcParser::FastSS1,
-     {26, 2, 0, PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.bssid_)}},
-    // required .HU.WifiSecurityReponse.SecurityMode security_mode = 4;
-    {::_pbi::TcParser::FastEvS1,
-     {32, 3, 0, PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.security_mode_)}},
-    // required .HU.WifiSecurityReponse.AccessPointType access_point_type = 5;
-    {::_pbi::TcParser::FastEr0S1,
-     {40, 4, 1, PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.access_point_type_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // required string ssid = 1;
-    {PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.ssid_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kRawString | ::_fl::kRepAString)},
-    // required string key = 2;
-    {PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.key_), _Internal::kHasBitsOffset + 1, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kRawString | ::_fl::kRepAString)},
-    // required string bssid = 3;
-    {PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.bssid_), _Internal::kHasBitsOffset + 2, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kRawString | ::_fl::kRepAString)},
-    // required .HU.WifiSecurityReponse.SecurityMode security_mode = 4;
-    {PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.security_mode_), _Internal::kHasBitsOffset + 3, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kEnum)},
-    // required .HU.WifiSecurityReponse.AccessPointType access_point_type = 5;
-    {PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.access_point_type_), _Internal::kHasBitsOffset + 4, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kEnumRange)},
-  }}, {{
-    {::_pbi::FieldAuxEnumData{}, ::HU::WifiSecurityReponse_SecurityMode_internal_data_},
-    {0, 2},
-  }}, {{
-    "\26\4\3\5\0\0\0\0"
-    "HU.WifiSecurityReponse"
-    "ssid"
-    "key"
-    "bssid"
-  }},
-};
-
-::uint8_t* WifiSecurityReponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* WifiSecurityReponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:HU.WifiSecurityReponse)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // required string ssid = 1;
   if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_ssid();
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(_s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormat::SERIALIZE,
-                                "HU.WifiSecurityReponse.ssid");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_ssid().data(), static_cast<int>(this->_internal_ssid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "HU.WifiSecurityReponse.ssid");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_ssid(), target);
   }
 
   // required string key = 2;
   if (cached_has_bits & 0x00000002u) {
-    const std::string& _s = this->_internal_key();
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(_s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormat::SERIALIZE,
-                                "HU.WifiSecurityReponse.key");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_key().data(), static_cast<int>(this->_internal_key().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "HU.WifiSecurityReponse.key");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_key(), target);
   }
 
   // required string bssid = 3;
   if (cached_has_bits & 0x00000004u) {
-    const std::string& _s = this->_internal_bssid();
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(_s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormat::SERIALIZE,
-                                "HU.WifiSecurityReponse.bssid");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_bssid().data(), static_cast<int>(this->_internal_bssid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "HU.WifiSecurityReponse.bssid");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_bssid(), target);
   }
 
   // required .HU.WifiSecurityReponse.SecurityMode security_mode = 4;
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-        4, this->_internal_security_mode(), target);
+      4, this->_internal_security_mode(), target);
   }
 
   // required .HU.WifiSecurityReponse.AccessPointType access_point_type = 5;
   if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-        5, this->_internal_access_point_type(), target);
+      5, this->_internal_access_point_type(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:HU.WifiSecurityReponse)
   return target;
 }
 
-::size_t WifiSecurityReponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:HU.WifiSecurityReponse)
-  ::size_t total_size = 0;
+size_t WifiSecurityReponse::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:HU.WifiSecurityReponse)
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  if (_internal_has_ssid()) {
+    // required string ssid = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ssid());
+  }
+
+  if (_internal_has_key()) {
+    // required string key = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_key());
+  }
+
+  if (_internal_has_bssid()) {
+    // required string bssid = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_bssid());
+  }
+
+  if (_internal_has_security_mode()) {
+    // required .HU.WifiSecurityReponse.SecurityMode security_mode = 4;
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_security_mode());
+  }
+
+  if (_internal_has_access_point_type()) {
+    // required .HU.WifiSecurityReponse.AccessPointType access_point_type = 5;
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_access_point_type());
+  }
+
+  return total_size;
+}
+size_t WifiSecurityReponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:HU.WifiSecurityReponse)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
+    // required string ssid = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ssid());
+
+    // required string key = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_key());
+
+    // required string bssid = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_bssid());
+
+    // required .HU.WifiSecurityReponse.SecurityMode security_mode = 4;
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_security_mode());
+
+    // required .HU.WifiSecurityReponse.AccessPointType access_point_type = 5;
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_access_point_type());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
-    // required string ssid = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_ssid());
-    }
-
-    // required string key = 2;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_key());
-    }
-
-    // required string bssid = 3;
-    if (cached_has_bits & 0x00000004u) {
-      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_bssid());
-    }
-
-    // required .HU.WifiSecurityReponse.SecurityMode security_mode = 4;
-    if (cached_has_bits & 0x00000008u) {
-      total_size += 1 +
-                    ::_pbi::WireFormatLite::EnumSize(this->_internal_security_mode());
-    }
-
-    // required .HU.WifiSecurityReponse.AccessPointType access_point_type = 5;
-    if (cached_has_bits & 0x00000010u) {
-      total_size += 1 +
-                    ::_pbi::WireFormatLite::EnumSize(this->_internal_access_point_type());
-    }
-
-  }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData WifiSecurityReponse::_class_data_ = {
-    WifiSecurityReponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WifiSecurityReponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    WifiSecurityReponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* WifiSecurityReponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WifiSecurityReponse::GetClassData() const { return &_class_data_; }
 
-void WifiSecurityReponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void WifiSecurityReponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<WifiSecurityReponse*>(&to_msg);
   auto& from = static_cast<const WifiSecurityReponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:HU.WifiSecurityReponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
@@ -628,7 +685,7 @@ void WifiSecurityReponse::MergeImpl(::google::protobuf::Message& to_msg, const :
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WifiSecurityReponse::CopyFrom(const WifiSecurityReponse& from) {
@@ -638,26 +695,30 @@ void WifiSecurityReponse::CopyFrom(const WifiSecurityReponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool WifiSecurityReponse::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) {
-    return false;
-  }
+bool WifiSecurityReponse::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
-::_pbi::CachedSize* WifiSecurityReponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void WifiSecurityReponse::InternalSwap(WifiSecurityReponse* PROTOBUF_RESTRICT other) {
+void WifiSecurityReponse::InternalSwap(WifiSecurityReponse* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ssid_, &other->_impl_.ssid_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, &other->_impl_.key_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bssid_, &other->_impl_.bssid_, arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.ssid_, lhs_arena,
+      &other->_impl_.ssid_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.key_, lhs_arena,
+      &other->_impl_.key_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.bssid_, lhs_arena,
+      &other->_impl_.bssid_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.access_point_type_)
       + sizeof(WifiSecurityReponse::_impl_.access_point_type_)
       - PROTOBUF_FIELD_OFFSET(WifiSecurityReponse, _impl_.security_mode_)>(
@@ -665,18 +726,17 @@ void WifiSecurityReponse::InternalSwap(WifiSecurityReponse* PROTOBUF_RESTRICT ot
           reinterpret_cast<char*>(&other->_impl_.security_mode_));
 }
 
-::google::protobuf::Metadata WifiSecurityReponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata WifiSecurityReponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Bluetooth_2eproto_getter, &descriptor_table_Bluetooth_2eproto_once,
       file_level_metadata_Bluetooth_2eproto[0]);
 }
+
 // ===================================================================
 
 class WifiInfoRequest::_Internal {
  public:
   using HasBits = decltype(std::declval<WifiInfoRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(WifiInfoRequest, _impl_._has_bits_);
   static void set_has_ip_address(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -688,56 +748,71 @@ class WifiInfoRequest::_Internal {
   }
 };
 
-WifiInfoRequest::WifiInfoRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+WifiInfoRequest::WifiInfoRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:HU.WifiInfoRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE WifiInfoRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        ip_address_(arena, from.ip_address_) {}
+WifiInfoRequest::WifiInfoRequest(const WifiInfoRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  WifiInfoRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ip_address_){}
+    , decltype(_impl_.port_){}};
 
-WifiInfoRequest::WifiInfoRequest(
-    ::google::protobuf::Arena* arena,
-    const WifiInfoRequest& from)
-    : ::google::protobuf::Message(arena) {
-  WifiInfoRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  _impl_.port_ = from._impl_.port_;
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.ip_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_ip_address()) {
+    _this->_impl_.ip_address_.Set(from._internal_ip_address(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.port_ = from._impl_.port_;
   // @@protoc_insertion_point(copy_constructor:HU.WifiInfoRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE WifiInfoRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        ip_address_(arena) {}
 
-inline void WifiInfoRequest::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.port_ = {};
+inline void WifiInfoRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ip_address_){}
+    , decltype(_impl_.port_){0u}
+  };
+  _impl_.ip_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 WifiInfoRequest::~WifiInfoRequest() {
   // @@protoc_insertion_point(destructor:HU.WifiInfoRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void WifiInfoRequest::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.ip_address_.Destroy();
-  _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void WifiInfoRequest::Clear() {
+void WifiInfoRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void WifiInfoRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:HU.WifiInfoRequest)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -747,125 +822,128 @@ PROTOBUF_NOINLINE void WifiInfoRequest::Clear() {
   }
   _impl_.port_ = 0u;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* WifiInfoRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* WifiInfoRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required string ip_address = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_ip_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "HU.WifiInfoRequest.ip_address");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // optional uint32 port = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _Internal::set_has_port(&has_bits);
+          _impl_.port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 37, 2> WifiInfoRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(WifiInfoRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_WifiInfoRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // optional uint32 port = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(WifiInfoRequest, _impl_.port_), 1>(),
-     {16, 1, 0, PROTOBUF_FIELD_OFFSET(WifiInfoRequest, _impl_.port_)}},
-    // required string ip_address = 1;
-    {::_pbi::TcParser::FastSS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(WifiInfoRequest, _impl_.ip_address_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // required string ip_address = 1;
-    {PROTOBUF_FIELD_OFFSET(WifiInfoRequest, _impl_.ip_address_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kRawString | ::_fl::kRepAString)},
-    // optional uint32 port = 2;
-    {PROTOBUF_FIELD_OFFSET(WifiInfoRequest, _impl_.port_), _Internal::kHasBitsOffset + 1, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
-  }},
-  // no aux_entries
-  {{
-    "\22\12\0\0\0\0\0\0"
-    "HU.WifiInfoRequest"
-    "ip_address"
-  }},
-};
-
-::uint8_t* WifiInfoRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* WifiInfoRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:HU.WifiInfoRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // required string ip_address = 1;
   if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_ip_address();
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(_s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormat::SERIALIZE,
-                                "HU.WifiInfoRequest.ip_address");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_ip_address().data(), static_cast<int>(this->_internal_ip_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "HU.WifiInfoRequest.ip_address");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_ip_address(), target);
   }
 
   // optional uint32 port = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        2, this->_internal_port(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_port(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:HU.WifiInfoRequest)
   return target;
 }
 
-::size_t WifiInfoRequest::ByteSizeLong() const {
+size_t WifiInfoRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:HU.WifiInfoRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  // required string ip_address = 1;
+  if (_internal_has_ip_address()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ip_address());
+  }
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // required string ip_address = 1;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_ip_address());
-  }
-
   // optional uint32 port = 2;
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000002u) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_port());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_port());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData WifiInfoRequest::_class_data_ = {
-    WifiInfoRequest::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WifiInfoRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    WifiInfoRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* WifiInfoRequest::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WifiInfoRequest::GetClassData() const { return &_class_data_; }
 
-void WifiInfoRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void WifiInfoRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<WifiInfoRequest*>(&to_msg);
   auto& from = static_cast<const WifiInfoRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:HU.WifiInfoRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
@@ -878,7 +956,7 @@ void WifiInfoRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WifiInfoRequest::CopyFrom(const WifiInfoRequest& from) {
@@ -888,38 +966,35 @@ void WifiInfoRequest::CopyFrom(const WifiInfoRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool WifiInfoRequest::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) {
-    return false;
-  }
+bool WifiInfoRequest::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
-::_pbi::CachedSize* WifiInfoRequest::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void WifiInfoRequest::InternalSwap(WifiInfoRequest* PROTOBUF_RESTRICT other) {
+void WifiInfoRequest::InternalSwap(WifiInfoRequest* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_address_, &other->_impl_.ip_address_, arena);
-        swap(_impl_.port_, other->_impl_.port_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.ip_address_, lhs_arena,
+      &other->_impl_.ip_address_, rhs_arena
+  );
+  swap(_impl_.port_, other->_impl_.port_);
 }
 
-::google::protobuf::Metadata WifiInfoRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata WifiInfoRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Bluetooth_2eproto_getter, &descriptor_table_Bluetooth_2eproto_once,
       file_level_metadata_Bluetooth_2eproto[1]);
 }
+
 // ===================================================================
 
 class WifiInfoResponse::_Internal {
  public:
   using HasBits = decltype(std::declval<WifiInfoResponse>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_._has_bits_);
   static void set_has_ip_address(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -934,63 +1009,75 @@ class WifiInfoResponse::_Internal {
   }
 };
 
-WifiInfoResponse::WifiInfoResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+WifiInfoResponse::WifiInfoResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:HU.WifiInfoResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE WifiInfoResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        ip_address_(arena, from.ip_address_) {}
+WifiInfoResponse::WifiInfoResponse(const WifiInfoResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  WifiInfoResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ip_address_){}
+    , decltype(_impl_.port_){}
+    , decltype(_impl_.status_){}};
 
-WifiInfoResponse::WifiInfoResponse(
-    ::google::protobuf::Arena* arena,
-    const WifiInfoResponse& from)
-    : ::google::protobuf::Message(arena) {
-  WifiInfoResponse* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, port_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, port_),
-           offsetof(Impl_, status_) -
-               offsetof(Impl_, port_) +
-               sizeof(Impl_::status_));
-
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.ip_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_ip_address()) {
+    _this->_impl_.ip_address_.Set(from._internal_ip_address(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.port_, &from._impl_.port_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.status_) -
+    reinterpret_cast<char*>(&_impl_.port_)) + sizeof(_impl_.status_));
   // @@protoc_insertion_point(copy_constructor:HU.WifiInfoResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE WifiInfoResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        ip_address_(arena),
-        status_{static_cast< ::HU::WifiInfoResponse_Status >(1)} {}
 
-inline void WifiInfoResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.port_ = {};
+inline void WifiInfoResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ip_address_){}
+    , decltype(_impl_.port_){0u}
+    , decltype(_impl_.status_){1}
+  };
+  _impl_.ip_address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 WifiInfoResponse::~WifiInfoResponse() {
   // @@protoc_insertion_point(destructor:HU.WifiInfoResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void WifiInfoResponse::SharedDtor() {
-  ABSL_DCHECK(GetArena() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.ip_address_.Destroy();
-  _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void WifiInfoResponse::Clear() {
+void WifiInfoResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void WifiInfoResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:HU.WifiInfoResponse)
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1003,106 +1090,122 @@ PROTOBUF_NOINLINE void WifiInfoResponse::Clear() {
     _impl_.status_ = 1;
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* WifiInfoResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* WifiInfoResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional string ip_address = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_ip_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "HU.WifiInfoResponse.ip_address");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // optional uint32 port = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _Internal::set_has_port(&has_bits);
+          _impl_.port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required .HU.WifiInfoResponse.Status status = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          if (PROTOBUF_PREDICT_TRUE(::HU::WifiInfoResponse_Status_IsValid(val))) {
+            _internal_set_status(static_cast<::HU::WifiInfoResponse_Status>(val));
+          } else {
+            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(3, val, mutable_unknown_fields());
+          }
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 1, 38, 2> WifiInfoResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_WifiInfoResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // optional string ip_address = 1;
-    {::_pbi::TcParser::FastSS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_.ip_address_)}},
-    // optional uint32 port = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(WifiInfoResponse, _impl_.port_), 1>(),
-     {16, 1, 0, PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_.port_)}},
-    // required .HU.WifiInfoResponse.Status status = 3;
-    {::_pbi::TcParser::FastErS1,
-     {24, 2, 0, PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_.status_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // optional string ip_address = 1;
-    {PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_.ip_address_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kRawString | ::_fl::kRepAString)},
-    // optional uint32 port = 2;
-    {PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_.port_), _Internal::kHasBitsOffset + 1, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
-    // required .HU.WifiInfoResponse.Status status = 3;
-    {PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_.status_), _Internal::kHasBitsOffset + 2, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kEnumRange)},
-  }}, {{
-    {-10, 12},
-  }}, {{
-    "\23\12\0\0\0\0\0\0"
-    "HU.WifiInfoResponse"
-    "ip_address"
-  }},
-};
-
-::uint8_t* WifiInfoResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* WifiInfoResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:HU.WifiInfoResponse)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   // optional string ip_address = 1;
   if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_ip_address();
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(_s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormat::SERIALIZE,
-                                "HU.WifiInfoResponse.ip_address");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_ip_address().data(), static_cast<int>(this->_internal_ip_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "HU.WifiInfoResponse.ip_address");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_ip_address(), target);
   }
 
   // optional uint32 port = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        2, this->_internal_port(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_port(), target);
   }
 
   // required .HU.WifiInfoResponse.Status status = 3;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-        3, this->_internal_status(), target);
+      3, this->_internal_status(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:HU.WifiInfoResponse)
   return target;
 }
 
-::size_t WifiInfoResponse::ByteSizeLong() const {
+size_t WifiInfoResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:HU.WifiInfoResponse)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  // required .HU.WifiInfoResponse.Status status = 3;
+  if (_internal_has_status()) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_status());
+  }
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1110,40 +1213,33 @@ const ::_pbi::TcParseTable<2, 3, 1, 38, 2> WifiInfoResponse::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // optional string ip_address = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_ip_address());
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_ip_address());
     }
 
     // optional uint32 port = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-          this->_internal_port());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_port());
     }
 
   }
-  // required .HU.WifiInfoResponse.Status status = 3;
-  if (cached_has_bits & 0x00000004u) {
-    total_size += 1 +
-                  ::_pbi::WireFormatLite::EnumSize(this->_internal_status());
-  }
-
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData WifiInfoResponse::_class_data_ = {
-    WifiInfoResponse::MergeImpl,
-    nullptr,  // OnDemandRegisterArenaDtor
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WifiInfoResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    WifiInfoResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData* WifiInfoResponse::GetClassData() const {
-  return &_class_data_;
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WifiInfoResponse::GetClassData() const { return &_class_data_; }
 
-void WifiInfoResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+
+void WifiInfoResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<WifiInfoResponse*>(&to_msg);
   auto& from = static_cast<const WifiInfoResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:HU.WifiInfoResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
@@ -1159,7 +1255,7 @@ void WifiInfoResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::go
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WifiInfoResponse::CopyFrom(const WifiInfoResponse& from) {
@@ -1169,41 +1265,47 @@ void WifiInfoResponse::CopyFrom(const WifiInfoResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool WifiInfoResponse::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) {
-    return false;
-  }
+bool WifiInfoResponse::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
-::_pbi::CachedSize* WifiInfoResponse::AccessCachedSize() const {
-  return &_impl_._cached_size_;
-}
-void WifiInfoResponse::InternalSwap(WifiInfoResponse* PROTOBUF_RESTRICT other) {
+void WifiInfoResponse::InternalSwap(WifiInfoResponse* other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_address_, &other->_impl_.ip_address_, arena);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_.status_)
-      + sizeof(WifiInfoResponse::_impl_.status_)
-      - PROTOBUF_FIELD_OFFSET(WifiInfoResponse, _impl_.port_)>(
-          reinterpret_cast<char*>(&_impl_.port_),
-          reinterpret_cast<char*>(&other->_impl_.port_));
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.ip_address_, lhs_arena,
+      &other->_impl_.ip_address_, rhs_arena
+  );
+  swap(_impl_.port_, other->_impl_.port_);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
-::google::protobuf::Metadata WifiInfoResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata WifiInfoResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_Bluetooth_2eproto_getter, &descriptor_table_Bluetooth_2eproto_once,
       file_level_metadata_Bluetooth_2eproto[2]);
 }
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace HU
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::HU::WifiSecurityReponse*
+Arena::CreateMaybeMessage< ::HU::WifiSecurityReponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::HU::WifiSecurityReponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::HU::WifiInfoRequest*
+Arena::CreateMaybeMessage< ::HU::WifiInfoRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::HU::WifiInfoRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::HU::WifiInfoResponse*
+Arena::CreateMaybeMessage< ::HU::WifiInfoResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::HU::WifiInfoResponse >(arena);
+}
+PROTOBUF_NAMESPACE_CLOSE
+
 // @@protoc_insertion_point(global_scope)
-#include "google/protobuf/port_undef.inc"
+#include <google/protobuf/port_undef.inc>

@@ -10,7 +10,7 @@ bool BluetoothService::registerService(const QBluetoothAddress& bluetoothAddress
     const QBluetoothUuid serviceUuid(QLatin1String("4de17a00-52cb-11e6-bdf4-0800200c9a66"));
 
     QBluetoothServiceInfo::Sequence classId;
-    classId << QVariant::fromValue(QBluetoothUuid(QBluetoothUuid::SerialPort));
+    classId << QVariant::fromValue(QBluetoothUuid(QBluetoothUuid::ServiceClassUuid::SerialPort));
     serviceInfo_.setAttribute(QBluetoothServiceInfo::BluetoothProfileDescriptorList, classId);
     classId.prepend(QVariant::fromValue(serviceUuid));
     serviceInfo_.setAttribute(QBluetoothServiceInfo::ServiceClassIds, classId);
@@ -20,15 +20,15 @@ bool BluetoothService::registerService(const QBluetoothAddress& bluetoothAddress
     serviceInfo_.setServiceUuid(serviceUuid);
 
     QBluetoothServiceInfo::Sequence publicBrowse;
-    publicBrowse << QVariant::fromValue(QBluetoothUuid(QBluetoothUuid::PublicBrowseGroup));
+    publicBrowse << QVariant::fromValue(QBluetoothUuid(QBluetoothUuid::ServiceClassUuid::PublicBrowseGroup));
     serviceInfo_.setAttribute(QBluetoothServiceInfo::BrowseGroupList, publicBrowse);
 
     QBluetoothServiceInfo::Sequence protocolDescriptorList;
     QBluetoothServiceInfo::Sequence protocol;
-    protocol << QVariant::fromValue(QBluetoothUuid(QBluetoothUuid::L2cap));
+    protocol << QVariant::fromValue(QBluetoothUuid(QBluetoothUuid::ProtocolUuid::L2cap));
     protocolDescriptorList.append(QVariant::fromValue(protocol));
     protocol.clear();
-    protocol << QVariant::fromValue(QBluetoothUuid(QBluetoothUuid::Rfcomm))
+    protocol << QVariant::fromValue(QBluetoothUuid(QBluetoothUuid::ProtocolUuid::Rfcomm))
              << QVariant::fromValue(quint16(portNumber));
     protocolDescriptorList.append(QVariant::fromValue(protocol));
     serviceInfo_.setAttribute(QBluetoothServiceInfo::ProtocolDescriptorList, protocolDescriptorList);
@@ -41,5 +41,5 @@ bool BluetoothService::unregisterService()
 }
 
 QBluetoothServiceInfo BluetoothService::getServiceInfo() {
-    return serviceInfo_;    
+    return serviceInfo_;
 }
