@@ -14,56 +14,56 @@ protected:
 
 public:
     // return > 0 if handled < 0 for error
-    virtual int MessageFilter(IHUConnectionThreadInterface &stream, HU_STATE state, ServiceChannels chan, uint16_t msg_type, const byte *buf,
-                              int len) {
+    virtual int MessageFilter(__attribute__((unused)) IHUConnectionThreadInterface &stream, __attribute__((unused)) HU_STATE state, __attribute__((unused)) ServiceChannels chan,
+                              __attribute__((unused)) uint16_t msg_type, __attribute__((unused)) const byte *buf, __attribute__((unused)) int len) {
         return 0;
     }
 
     // return -1 for error
-    virtual int MediaPacket(ServiceChannels chan, uint64_t timestamp, const byte *buf, int len) = 0;
-    virtual int MediaStart(ServiceChannels chan) = 0;
-    virtual int MediaStop(ServiceChannels chan) = 0;
-    virtual void MediaSetupComplete(ServiceChannels chan) = 0;
+    virtual int MediaPacket(__attribute__((unused)) ServiceChannels chan, __attribute__((unused)) uint64_t timestamp, __attribute__((unused)) const byte *buf, __attribute__((unused)) int len) = 0;
+    virtual int MediaStart(__attribute__((unused)) ServiceChannels chan) = 0;
+    virtual int MediaStop(__attribute__((unused)) ServiceChannels chan) = 0;
+    virtual void MediaSetupComplete(__attribute__((unused)) ServiceChannels chan) = 0;
 
     virtual void DisconnectionOrError() = 0;
     virtual void Connected() = 0;
 
-    virtual void CustomizeCarInfo(HU::ServiceDiscoveryResponse &carInfo) {
+    virtual void CustomizeCarInfo(__attribute__((unused)) HU::ServiceDiscoveryResponse &carInfo) {
     }
-    virtual void CustomizeInputConfig(HU::ChannelDescriptor::InputEventChannel &inputChannel) {
+    virtual void CustomizeInputConfig(__attribute__((unused)) HU::ChannelDescriptor::InputEventChannel &inputChannel) {
     }
-    virtual void CustomizeSensorConfig(HU::ChannelDescriptor::SensorChannel &sensorChannel) {
+    virtual void CustomizeSensorConfig(__attribute__((unused)) HU::ChannelDescriptor::SensorChannel &sensorChannel) {
     }
-    virtual void CustomizeOutputChannel(ServiceChannels chan, HU::ChannelDescriptor::OutputStreamChannel &streamChannel) {
+    virtual void CustomizeOutputChannel(__attribute__((unused)) ServiceChannels chan, __attribute__((unused)) HU::ChannelDescriptor::OutputStreamChannel &streamChannel) {
     }
-    virtual void CustomizeInputChannel(ServiceChannels chan, HU::ChannelDescriptor::InputStreamChannel &streamChannel) {
+    virtual void CustomizeInputChannel(__attribute__((unused)) ServiceChannels chan, __attribute__((unused)) HU::ChannelDescriptor::InputStreamChannel &streamChannel) {
     }
-    virtual void CustomizeBluetoothService(ServiceChannels chan, HU::ChannelDescriptor::BluetoothService &bluetoothService) {
+    virtual void CustomizeBluetoothService(__attribute__((unused)) ServiceChannels chan, __attribute__((unused)) HU::ChannelDescriptor::BluetoothService &bluetoothService) {
     }
 
     // returning a empty string means no bluetooth
     virtual std::string GetCarBluetoothAddress() {
         return std::string();
     }
-    virtual void PhoneBluetoothReceived(std::string address) {
+    virtual void PhoneBluetoothReceived(__attribute__((unused)) std::string address) {
     }
 
-    virtual void AudioFocusRequest(ServiceChannels chan, const HU::AudioFocusRequest &request) = 0;
-    virtual void VideoFocusRequest(ServiceChannels chan, const HU::VideoFocusRequest &request) = 0;
+    virtual void AudioFocusRequest(__attribute__((unused)) ServiceChannels chan, __attribute__((unused)) const HU::AudioFocusRequest &request) = 0;
+    virtual void VideoFocusRequest(__attribute__((unused)) ServiceChannels chan, __attribute__((unused)) const HU::VideoFocusRequest &request) = 0;
 
-    virtual void HandlePhoneStatus(IHUConnectionThreadInterface &stream, const HU::PhoneStatus &phoneStatus) {
-    }
-
-    virtual void HandleGenericNotificationResponse(IHUConnectionThreadInterface &stream, const HU::GenericNotificationResponse &response) {
+    virtual void HandlePhoneStatus(__attribute__((unused)) IHUConnectionThreadInterface &stream, __attribute__((unused)) const HU::PhoneStatus &phoneStatus) {
     }
 
-    virtual void ShowingGenericNotifications(IHUConnectionThreadInterface &stream, bool bIsShowing) {
+    virtual void HandleGenericNotificationResponse(__attribute__((unused)) IHUConnectionThreadInterface &stream, __attribute__((unused)) const HU::GenericNotificationResponse &response) {
     }
-    virtual void HandleNaviStatus(IHUConnectionThreadInterface &stream, const HU::NAVMessagesStatus &request) {
+
+    virtual void ShowingGenericNotifications(__attribute__((unused)) IHUConnectionThreadInterface &stream, __attribute__((unused)) bool bIsShowing) {
     }
-    virtual void HandleNaviTurn(IHUConnectionThreadInterface &stream, const HU::NAVTurnMessage &request) {
+    virtual void HandleNaviStatus(__attribute__((unused)) IHUConnectionThreadInterface &stream, __attribute__((unused)) const HU::NAVMessagesStatus &request) {
     }
-    virtual void HandleNaviTurnDistance(IHUConnectionThreadInterface &stream, const HU::NAVDistanceMessage &request) {
+    virtual void HandleNaviTurn(__attribute__((unused)) IHUConnectionThreadInterface &stream, __attribute__((unused)) const HU::NAVTurnMessage &request) {
+    }
+    virtual void HandleNaviTurnDistance(__attribute__((unused)) IHUConnectionThreadInterface &stream, __attribute__((unused)) const HU::NAVDistanceMessage &request) {
     }
 };
 }
