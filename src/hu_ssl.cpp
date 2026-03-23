@@ -114,9 +114,12 @@ int HUServer::beginSSLHandshake() {
     }
 
     SSL_load_error_strings();  // Before or after init ?
-    ERR_load_BIO_strings();
     ERR_load_crypto_strings();
+
+#if OPENSSL_VERSION_NUMBER < 0x10100000L //Not needed in OpenSSL > 1.1.0
     ERR_load_SSL_strings();
+    ERR_load_BIO_strings();
+#endif
 
     OPENSSL_add_all_algorithms_noconf();  // Add all algorithms, without using
                                           // config file
@@ -168,12 +171,13 @@ int HUServer::beginSSLHandshake() {
     else
         logd("BIO_free(pkey_bio) ret: %d", ret);
 
-    m_sslMethod = (SSL_METHOD *)TLSv1_2_client_method();
+    //m_sslMethod = (SSL_METHOD *)TLSv1_2_client_method();
+    m_sslMethod = (SSL_METHOD *)TLS_client_method();
     if (m_sslMethod == NULL) {
-        loge("TLSv1_2_client_method() error");
+        loge("TLS_client_method() error");
         return (-1);
     }
-    logd("TLSv1_2_client_method() hu_ssl_method: %p", m_sslMethod);
+    logd("TLS_client_method() hu_ssl_method: %p", m_sslMethod);
 
     m_sslContext = SSL_CTX_new(m_sslMethod);
     if (m_sslContext == NULL) {

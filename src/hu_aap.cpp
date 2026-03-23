@@ -363,7 +363,7 @@ int HUServer::sendUnencodedMessage(int retry, ServiceChannels chan, uint16_t mes
     return sendUnencoded(retry, chan, temp_assembly_buffer->data(), requiredSize, overrideTimeout);
 }
 
-int HUServer::handle_VersionResponse(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_VersionResponse(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     logd("Version response recv len: %d", len);
     hex_dump("version", 40, buf, len);
 
@@ -601,7 +601,7 @@ int HUServer::handle_ShutdownRequest(ServiceChannels chan, byte *buf,
     return (-1);
 }
 
-int HUServer::handle_VoiceSessionRequest(ServiceChannels chan, byte *buf,
+int HUServer::handle_VoiceSessionRequest(__attribute__((unused)) ServiceChannels chan, byte *buf,
                                          int len) {  // sr:  00000000 00 11 08 01      Microphone voice search usage
     // sr:  00000000 00 11 08 02
 
@@ -744,7 +744,7 @@ int HUServer::handle_BindingRequest(ServiceChannels chan, byte *buf,
     return sendEncodedMessage(0, chan, INPUT_CHANNEL_MESSAGE::BindingResponse, response);
 }
 
-int HUServer::handle_MediaAck(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_MediaAck(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::MediaAck request;
     if (!request.ParseFromArray(buf, len))
         loge("MediaAck");
@@ -799,7 +799,7 @@ int HUServer::handle_MediaData(ServiceChannels chan, byte *buf, int len) {
     return sendEncodedMessage(0, chan, MEDIA_CHANNEL_MESSAGE::MediaAck, mediaAck);
 }
 
-int HUServer::handle_PhoneStatus(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_PhoneStatus(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::PhoneStatus request;
     if (!request.ParseFromArray(buf, len)) {
         loge("PhoneStatus Focus Request");
@@ -811,7 +811,7 @@ int HUServer::handle_PhoneStatus(ServiceChannels chan, byte *buf, int len) {
     return 0;
 }
 
-int HUServer::handle_GenericNotificationResponse(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_GenericNotificationResponse(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::GenericNotificationResponse request;
     if (!request.ParseFromArray(buf, len)) {
         loge("GenericNotificationResponse Focus Request");
@@ -823,7 +823,7 @@ int HUServer::handle_GenericNotificationResponse(ServiceChannels chan, byte *buf
     return 0;
 }
 
-int HUServer::handle_StartGenericNotifications(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_StartGenericNotifications(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::StartGenericNotifications request;
     if (!request.ParseFromArray(buf, len)) {
         loge("StartGenericNotifications Focus Request");
@@ -835,7 +835,7 @@ int HUServer::handle_StartGenericNotifications(ServiceChannels chan, byte *buf, 
     return 0;
 }
 
-int HUServer::handle_StopGenericNotifications(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_StopGenericNotifications(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::StopGenericNotifications request;
     if (!request.ParseFromArray(buf, len)) {
         loge("StopGenericNotifications Focus Request");
@@ -864,7 +864,7 @@ int HUServer::handle_BluetoothPairingRequest(ServiceChannels chan, byte *buf, in
     return sendEncodedMessage(0, chan, BLUETOOTH_CHANNEL_MESSAGE::BluetoothPairingResponse, response);
 }
 
-int HUServer::handle_BluetoothAuthData(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_BluetoothAuthData(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::BluetoothAuthData request;
     if (!request.ParseFromArray(buf, len)) {
         loge("BluetoothAuthData Focus Request");
@@ -876,7 +876,7 @@ int HUServer::handle_BluetoothAuthData(ServiceChannels chan, byte *buf, int len)
     return 0;
 }
 
-int HUServer::handle_NaviStatus(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_NaviStatus(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::NAVMessagesStatus request;
     if (!request.ParseFromArray(buf, len)) {
         logv("NaviStatus Request");
@@ -889,7 +889,7 @@ int HUServer::handle_NaviStatus(ServiceChannels chan, byte *buf, int len) {
     return 0;
 }
 
-int HUServer::handle_NaviTurn(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_NaviTurn(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::NAVTurnMessage request;
     if (!request.ParseFromArray(buf, len)) {
         logv("NaviTurn Request");
@@ -902,7 +902,7 @@ int HUServer::handle_NaviTurn(ServiceChannels chan, byte *buf, int len) {
     return 0;
 }
 
-int HUServer::handle_NaviTurnDistance(ServiceChannels chan, byte *buf, int len) {
+int HUServer::handle_NaviTurnDistance(__attribute__((unused)) ServiceChannels chan, byte *buf, int len) {
     HU::NAVDistanceMessage request;
     if (!request.ParseFromArray(buf, len)) {
         logv("NaviTurnDistance Request");
@@ -1171,7 +1171,7 @@ void HUServer::mainThread() {
             if (FD_ISSET(command_read_fd, &sock_set)) {
                 logd("Got command_read_fd");
                 IHUAnyThreadInterface::HUThreadCommand *ptr = nullptr;
-                if (ptr = popCommand()) {
+                if ((ptr = popCommand())) {
                     logd("Running %p", ptr);
                     (*ptr)(*this);
                     delete ptr;

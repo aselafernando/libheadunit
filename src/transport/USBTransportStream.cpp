@@ -56,7 +56,7 @@ struct usbvpid {
     uint16_t product;
 };
 
-int USBTransportStream::Write(const byte* buf, int len, int tmo) {
+int USBTransportStream::Write(const byte* buf, int len, __attribute__((unused)) int tmo) {
     byte* copy_buf = (byte*)malloc(len);
     memcpy(copy_buf, buf, len);
 

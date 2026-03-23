@@ -123,7 +123,7 @@ void BluetoothServer::handleWifiInfoRequest(QByteArray& buffer, uint16_t length)
     sendMessage(response, 7);
 }
 
-void BluetoothServer::handleWifiSecurityRequest(QByteArray& buffer, uint16_t length)
+void BluetoothServer::handleWifiSecurityRequest( __attribute__((unused)) QByteArray& buffer, __attribute__((unused)) uint16_t length)
 {
     HU::WifiSecurityReponse response;
 

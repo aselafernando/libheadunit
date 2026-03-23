@@ -125,7 +125,7 @@ int TCPTransportStream::itcp_accept() {
 int TCPTransportStream::itcp_init() {
     int net_port = 5000;
 
-    int cmd_len = 0, ctr = 0;
+    //int cmd_len = 0, ctr = 0;
 
     errno = 0;
     //if ((tcp_so_fd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0)) < 0) {  // Create socket
